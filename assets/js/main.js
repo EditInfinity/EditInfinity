@@ -3,28 +3,22 @@
 const examples = {
   1: {
     title: "Thoughtful → surprised",
-    detail:
-      "Full-image editing changes the facial expression without a background-preservation mask.",
     prompt: "Light-skinned boy with short hair looking surprised",
-    mode: "Case 1 · Full-image editing",
+    mode: "Full-image editing",
     beforeAlt: "Original portrait of a boy with short hair looking thoughtful",
     afterAlt: "Edited portrait of the same boy looking surprised",
   },
   2: {
     title: "A cup → a candle",
-    detail:
-      "A supplied mask localizes the object replacement while preserving the basket, books, and surrounding scene.",
     prompt: "a basket of books and a candle",
-    mode: "Case 2 · User-provided mask",
+    mode: "User-provided mask",
     beforeAlt: "Original still life with a basket of books and a cup",
     afterAlt: "Edited still life with the cup replaced by a candle",
   },
   3: {
     title: "Red drink → red wine",
-    detail:
-      "The target word “drink” guides attention-based mask generation, preserving the surrounding beach scene.",
     prompt: "a glass of red wine on the beach",
-    mode: "Case 3 · Automatic mask",
+    mode: "Automatic mask",
     beforeAlt: "Original image of a glass of red drink on the beach",
     afterAlt: "Edited image of a glass of red wine on the beach",
   },
@@ -50,6 +44,8 @@ async function selectExample(tab) {
   if (!example) return;
   const request = ++activeRequest;
   panel.setAttribute("aria-busy", "true");
+  const status = document.querySelector(".demo-status");
+  status.hidden = true;
   const paths = ["before", "after"].map(
     (side) => `assets/images/case${id}-${side}.webp`,
   );
@@ -77,15 +73,17 @@ async function selectExample(tab) {
     afterImage.src = paths[1];
     afterImage.alt = example.afterAlt;
     document.querySelector("#demo-title").textContent = example.title;
-    document.querySelector("#demo-detail").textContent = example.detail;
     document.querySelector("#target-prompt").textContent = example.prompt;
     document.querySelector("#demo-mode").textContent = example.mode;
     document.querySelector("#demo-source").href =
       `https://github.com/yx-chen-ust/EditInfinity/tree/main/example_case/example_${id}`;
     resetComparison();
   } catch {
-    document.querySelector(".interaction-note").textContent =
-      "This image could not be loaded. Please try the example again.";
+    if (request === activeRequest) {
+      status.textContent =
+        "This image could not be loaded. Please try the example again.";
+      status.hidden = false;
+    }
   } finally {
     if (request === activeRequest) panel.removeAttribute("aria-busy");
   }

@@ -55,20 +55,17 @@
       </div>
     </header>
     <aside class="page-toc" aria-label="On this page">
-      <p class="eyebrow">On this page</p>
-      <a href="#overview" aria-current="location"><span>01</span> Overview</a>
-      <a href="#examples"><span>02</span> Editing examples</a>
-      <a href="#method"><span>03</span> Method</a>
-      <a href="#results"><span>04</span> Results</a>
-      <a href="#resources"><span>05</span> Get started</a>
-      <a href="#citation"><span>06</span> Citation</a>
-      <div class="toc-footer">NeurIPS 2025<br />Image editing, reimagined.</div>
+      <a href="#overview" aria-current="location">Overview</a>
+      <a href="#examples">Editing examples</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#resources">Get started</a>
+      <a href="#citation">Citation</a>
     </aside>
     <main id="main" class="page-shell">
       <section class="hero" id="top" aria-labelledby="project-title">
         <div class="hero-meta">
-          <span class="venue">NeurIPS 2025</span
-          ><span>Visual autoregressive image editing</span>
+          <span class="venue">NeurIPS 2025</span>
         </div>
         <h1 id="project-title">
           <span class="project-name"
@@ -115,13 +112,7 @@
               alt="Nine source and edited image pairs showing object addition, replacement, and deletion"
               fetchpriority="high"
             />
-            <span class="zoom-hint" aria-hidden="true">↗ View full size</span>
           </button>
-          <figcaption>
-            <span class="figure-index">Figure 01</span> Add, change, or remove.
-            EditInfinity follows the target prompt while preserving the details
-            that should stay.
-          </figcaption>
         </figure>
       </section>
 
@@ -134,7 +125,6 @@
       <section class="section" id="overview" aria-labelledby="overview-title">
         <div class="section-heading">
           <h2 id="overview-title">Editing with fidelity.</h2>
-          <span class="section-number">01 / Overview</span>
         </div>
         <p class="lead">Change what you mean. Preserve what you don't.</p>
         <div class="overview-copy">
@@ -155,14 +145,12 @@
         </div>
         <div class="principles">
           <div>
-            <span class="mini-label">01 — Invert</span>
             <h3>Exact supervision.</h3>
             <p>
               Recover source-image details with ground-truth quantized tokens.
             </p>
           </div>
           <div>
-            <span class="mini-label">02 — Adapt</span>
             <h3>Lightweight updates.</h3>
             <p>
               Optimize a learnable prompt and LoRA, keeping the base model
@@ -170,7 +158,6 @@
             </p>
           </div>
           <div>
-            <span class="mini-label">03 — Edit</span>
             <h3>Coherent changes.</h3>
             <p>
               Blend source and edited representations for smooth, faithful
@@ -183,11 +170,10 @@
       <section class="section" id="examples" aria-labelledby="examples-title">
         <div class="section-heading">
           <h2 id="examples-title">A closer look at the edits.</h2>
-          <span class="section-number">02 / Explore</span>
         </div>
         <p>
-          Three real examples from the released code. Select an example, then
-          drag the divider to compare the original and edited images.
+          Choose an example, then drag the divider or use the arrow keys to
+          compare the source and edited images.
         </p>
         <div class="demo-tabs" role="tablist" aria-label="Editing examples">
           <button
@@ -197,7 +183,7 @@
             aria-controls="edit-panel"
             data-case="1"
           >
-            01 <span>Change expression</span>
+            <span>Change expression</span>
           </button>
           <button
             id="tab-case2"
@@ -207,7 +193,7 @@
             tabindex="-1"
             data-case="2"
           >
-            02 <span>Replace an object</span>
+            <span>Replace an object</span>
           </button>
           <button
             id="tab-case3"
@@ -217,7 +203,7 @@
             tabindex="-1"
             data-case="3"
           >
-            03 <span>Refine appearance</span>
+            <span>Refine appearance</span>
           </button>
         </div>
         <div
@@ -265,22 +251,17 @@
           </div>
           <div class="demo-description">
             <div>
-              <span class="mini-label">The edit</span>
               <h3 id="demo-title">Thoughtful → surprised</h3>
-              <p id="demo-detail">
-                Full-image editing changes the facial expression without a
-                background-preservation mask.
-              </p>
+              <p id="demo-mode">Full-image editing</p>
             </div>
             <div class="prompt">
-              <span class="mini-label">Target prompt</span>
+              <span class="prompt-label">Target prompt</span>
               <p id="target-prompt">
                 Light-skinned boy with short hair looking surprised
               </p>
             </div>
             <div class="demo-foot">
-              <span id="demo-mode">Case 1 · Full-image editing</span
-              ><a
+              <a
                 id="demo-source"
                 href="https://github.com/yx-chen-ust/EditInfinity/tree/main/example_case/example_1"
                 >View this example ↗</a
@@ -288,10 +269,7 @@
             </div>
           </div>
         </div>
-        <p class="interaction-note">
-          ← → Arrow keys also move the divider. These are precomputed results
-          from the repository.
-        </p>
+        <p class="demo-status" role="status" hidden></p>
         <noscript
           ><p>
             Interactive selection requires JavaScript.
@@ -319,13 +297,11 @@
                 height="796"
                 alt="Qualitative comparison of EditInfinity with diffusion-based methods across nine editing tasks"
                 loading="lazy"
-              /><span class="zoom-hint" aria-hidden="true"
-                >↗ View full size</span
-              >
+              />
             </button>
             <figcaption>
               Adding and deleting objects; changing object, content, pose,
-              color, material, background, and style. See Figure 6 in the paper.
+              color, material, background, and style.
             </figcaption>
           </figure>
         </details>
@@ -334,7 +310,6 @@
       <section class="section" id="method" aria-labelledby="method-title">
         <div class="section-heading">
           <h2 id="method-title">From exact tokens to precise edits.</h2>
-          <span class="section-number">03 / Method</span>
         </div>
         <p>
           The method follows two stages: reconstruct the source image, then edit
@@ -344,8 +319,7 @@
           <div class="stage-heading">
             <span class="stage-index">I</span>
             <div>
-              <span class="mini-label">Image inversion</span>
-              <h3>Exact supervision, faithful reconstruction.</h3>
+              <h3>Image inversion with exact supervision.</h3>
             </div>
           </div>
           <figure>
@@ -361,9 +335,7 @@
                 height="436"
                 alt="Inversion pipeline: quantize the source image, optimize a learnable prompt, then train LoRA in Infinity's feed-forward layers"
                 loading="lazy"
-              /><span class="zoom-hint" aria-hidden="true"
-                >↗ View full size</span
-              >
+              />
             </button>
           </figure>
           <ol class="method-steps">
@@ -385,8 +357,7 @@
           <div class="stage-heading">
             <span class="stage-index">II</span>
             <div>
-              <span class="mini-label">Image editing</span>
-              <h3>Holistic smoothing, seamless changes.</h3>
+              <h3>Image editing with holistic smoothing.</h3>
             </div>
           </div>
           <figure>
@@ -402,9 +373,7 @@
                 height="496"
                 alt="Editing pipeline: generate target tokens and blend them with source tokens through holistic smoothing before decoding"
                 loading="lazy"
-              /><span class="zoom-hint" aria-hidden="true"
-                >↗ View full size</span
-              >
+              />
             </button>
           </figure>
           <p>
@@ -433,15 +402,8 @@
                 height="351"
                 alt="Ablation of the learnable prompt and LoRA components"
                 loading="lazy"
-              /><span class="zoom-hint" aria-hidden="true"
-                >↗ View full size</span
-              >
+              />
             </button>
-            <figcaption>
-              The learnable prompt improves semantic conditioning, while LoRA
-              helps retain source-image style and detail. See Figure 7 in the
-              paper.
-            </figcaption>
           </figure>
         </details>
       </section>
@@ -449,7 +411,6 @@
       <section class="section" id="results" aria-labelledby="results-title">
         <div class="section-heading">
           <h2 id="results-title">Faithfulness, measured.</h2>
-          <span class="section-number">04 / Results</span>
         </div>
         <p>
           Evaluated on
@@ -460,15 +421,15 @@
         <div class="result-highlights">
           <div>
             <span class="result-value">27.95<span>dB</span></span
-            ><span class="mini-label">Background PSNR ↑</span>
+            ><span class="metric-label">Background PSNR ↑</span>
           </div>
           <div>
             <span class="result-value">92.12</span
-            ><span class="mini-label">Background SSIM ×10² ↑</span>
+            ><span class="metric-label">Background SSIM ×10² ↑</span>
           </div>
           <div>
             <span class="result-value">43.2<span>%</span></span
-            ><span class="mini-label">User preference</span>
+            ><span class="metric-label">User preference</span>
           </div>
         </div>
         <div
@@ -478,7 +439,7 @@
           tabindex="0"
         >
           <table>
-            <caption>
+            <caption class="sr-only">
               PIE-Bench comparison · Table 1 from the paper
             </caption>
             <thead>
@@ -591,7 +552,7 @@
                 <td>5.30</td>
               </tr>
               <tr class="ours">
-                <th scope="row">EditInfinity <span>Ours</span></th>
+                <th scope="row">EditInfinity</th>
                 <td>27.95</td>
                 <td>33.08</td>
                 <td>24.27</td>
@@ -604,8 +565,7 @@
           </table>
         </div>
         <p class="table-note">
-          ↑ Higher is better. ↓ Lower is better. IR: ImageReward. Values use the
-          scaling reported in the paper.
+          ↑ Higher is better. ↓ Lower is better. IR = ImageReward.
         </p>
         <figure class="result-figure">
           <button
@@ -620,12 +580,11 @@
               height="562"
               alt="Task-level radar comparisons and user study, with EditInfinity receiving 43.2 percent preference"
               loading="lazy"
-            /><span class="zoom-hint" aria-hidden="true">↗ View full size</span>
+            />
           </button>
           <figcaption>
-            Results across editing types and human preference. The user study
-            involved 60 volunteers, each evaluating 20 cases from a pool of 140.
-            The 43.2% value is a preference share, not a task success rate.
+            Task-level comparisons and a study with 60 volunteers. EditInfinity
+            received 43.2% of user preferences.
           </figcaption>
         </figure>
       </section>
@@ -633,7 +592,6 @@
       <section class="section" id="resources" aria-labelledby="resources-title">
         <div class="section-heading">
           <h2 id="resources-title">Make your own edits.</h2>
-          <span class="section-number">05 / Get started</span>
         </div>
         <p>
           The released code includes full-image editing, background preservation
@@ -642,30 +600,13 @@
         <div class="resource-list">
           <a
             href="https://github.com/yx-chen-ust/EditInfinity#environment-setup"
-            ><span class="resource-index">01</span
-            ><span
-              ><strong>Set up the environment</strong
-              ><small
-                >PyTorch, CUDA, FlashAttention, and model weights.</small
-              ></span
+            ><span><strong>Set up the environment</strong></span
             ><span aria-hidden="true">↗</span></a
           ><a href="https://github.com/yx-chen-ust/EditInfinity#quick-start"
-            ><span class="resource-index">02</span
-            ><span
-              ><strong>Run an example</strong
-              ><small
-                >Three complete pipelines, from inversion to the final
-                edit.</small
-              ></span
+            ><span><strong>Run an example</strong></span
             ><span aria-hidden="true">↗</span></a
           ><a href="https://arxiv.org/pdf/2510.20217"
-            ><span class="resource-index">03</span
-            ><span
-              ><strong>Read the full paper</strong
-              ><small
-                >Method, experiments, ablations, and implementation
-                details.</small
-              ></span
+            ><span><strong>Read the full paper</strong></span
             ><span aria-hidden="true">↗</span></a
           >
         </div>
@@ -678,16 +619,11 @@
       >
         <div class="section-heading">
           <h2 id="citation-title">Citation.</h2>
-          <span class="section-number">06 / BibTeX</span>
         </div>
-        <p>
-          If you find EditInfinity useful in your research, please consider
-          citing our work.
-        </p>
+
         <div class="citation-box">
           <div class="code-toolbar">
-            <span>BibTeX</span
-            ><button type="button" id="copy-citation">
+            <button type="button" id="copy-citation">
               Copy citation <span aria-hidden="true">↗</span>
             </button>
           </div>
@@ -703,23 +639,13 @@
         </div>
       </section>
       <footer class="site-footer">
-        <a class="footer-brand" href="#top"
-          >EditInfinity <span aria-hidden="true">↑</span></a
+        <a href="https://github.com/EditInfinity/EditInfinity"
+          >Website source ↗</a
         >
         <p>
-          Built on
-          <a href="https://github.com/FoundationVision/Infinity">Infinity</a>.
-          Website design inspired by
+          Design inspired by
           <a href="https://robbyant-research.github.io/Zero-WAM/">Zero-WAM</a>
           and <a href="https://resettle-robotics.github.io/">RESETTLE</a>.
-        </p>
-        <p>
-          <a href="https://github.com/EditInfinity/EditInfinity"
-            >Website source ↗</a
-          ><span> · </span
-          ><a href="https://github.com/yx-chen-ust/EditInfinity/issues"
-            >Questions &amp; feedback ↗</a
-          >
         </p>
       </footer>
     </main>
